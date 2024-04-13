@@ -6,9 +6,25 @@
     <h1>List users</h1>
   {{/if}}
 
-  <ul>
-    {{#each users}}
-      <li>{{this}}</li>
-    {{/each}}
-  </ul>
+  <!-- Table -->
+  <div class='row'>
+    <div class='col'>Name</div>
+    <div class='col'>Adress</div>
+    <div class='col'>Link</div>
+  </div>
+  {{#each users}}
+    <div class='row'>
+
+      <div class='col'>
+        {{this.name}}
+      </div>
+      <div class='col'>
+        Adrees
+      </div>
+      <div class='col'>
+        {{this.website}}
+      </div>
+    </div>
+  {{/each}}
+
 </div>

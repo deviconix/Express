@@ -13,11 +13,12 @@ const userShema = new Schema(
             zipcode: String,
         },
         geo: {
-            lat: string,
-            lng: string
+            lat: String,
+            lng: String
         }
     },
     { timestamps: true }
 );
 
-module.exports = mongoose.model('User', userShema, 'User');
+module.exports = mongoose.model('User', userShema, 'users');
+// users name in base
