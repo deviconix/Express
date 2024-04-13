@@ -44,3 +44,9 @@ Instalowanie pakietów
 ```
 npm i express express-handlebars mongoose
 ```
+
+index.js
+
+```
+
+```
