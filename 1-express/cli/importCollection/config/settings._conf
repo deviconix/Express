@@ -1,0 +1,4 @@
+--db mydatabase
+--collection mycollection
+--file data.json
+--jsonArray

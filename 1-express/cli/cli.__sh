@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Получаем полный путь к текущему каталогу скрипта
+current_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)"
+echo "$current_dir"
+echo "$current_dir"
+# Добавляем текущий каталог и его подкаталоги к переменной PATH
+while IFS= read -r -d '' file; do
+    if [[ -x "$file" ]]; then
+        export PATH="$PATH:$file"
+    fi
+done < <(find "$current_dir" -d -print | tr '\n' '\0')
+
+# Теперь все исполняемые файлы в текущем каталоге и его подкаталогах доступны из любой директории
