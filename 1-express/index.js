@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const User = require('./app/models/UserModel');
+//const mongooseLeanVirtuals = require('mongoose-lean-virtuals');
 // CONST
 // app
 const APP_PORT = 8080;
@@ -33,8 +34,10 @@ app.get('/', function (req, res) {
 
 app.get('/users', async function (req, res) {
     try {
-        const users = await User.find({}).lean();
-        console.log(users);
+        const users = await User.find({}).lean({ virtuals: true });
+        console.log(users.forEach(item => { console.log(item.fullName) }));
+        //console.log(users.forEach(item => { console.log(item) }));
+        console.log(users[0])
         //res.send('View Users');
         res.render("users", {
             title: "List USERS demo",

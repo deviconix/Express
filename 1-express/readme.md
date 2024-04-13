@@ -37,12 +37,13 @@ npm init -y
 - express
 - express-handlebars
 - mongoose
+- mongoose-lean-virtuals
 - bootstrap 5 (łączy się w szablonie)
 
 Instalowanie pakietów
 
 ```
-npm i express express-handlebars mongoose
+npm i express express-handlebars mongoose mongoose-lean-virtuals
 ```
 
 index.js
