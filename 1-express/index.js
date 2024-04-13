@@ -1,11 +1,24 @@
 const express = require('express');
+const hbs = require('express-handlebars');
+const mongoose = require("mongoose");
+
+// CONST
+const APP_PORT = 8080;
+const NAME_DB = 'express01';
+
+// create app
 const app = express();
 
 // init handlebars
-const hbs = require('express-handlebars');
 app.engine("hbs", hbs.engine({ extname: ".hbs" }));
 app.set("view engine", "hbs");
 
+// connect to base
+mongoose.connect(`mongodb://127.0.0.1:27017/${NAME_DB}`);
+const db = mongoose.connection;
+db.on('error', function (err) {
+    console.error('Error connect :', err);
+});
 
 // route root
 app.get('/', function (req, res) {
@@ -21,7 +34,7 @@ app.get('/users', function (req, res) {
 });
 
 // run server
-const APP_PORT = 8080;
+
 app.listen(APP_PORT, function () {
     console.log('Listen port :', APP_PORT);
     console.log('Server Run ...');
