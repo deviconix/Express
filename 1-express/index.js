@@ -1,8 +1,7 @@
 const express = require('express');
 const hbs = require('express-handlebars');
 const mongoose = require('mongoose');
-
-const userController = require('./app/controllers/userController');
+const userRouter = require('./app/router/userRouter');
 // CONST
 // app
 const APP_PORT = 8080;
@@ -26,16 +25,15 @@ db.on('error', function (err) {
     console.error('Error connect :', err);
 });
 
-
 // route root
 app.get('/', function (req, res) {
     res.send('Hello world :-)');
 });
 
-app.get('/users', userController.index);
+/* Routes */
+app.use("user", userRouter);
 
 // run server
-
 app.listen(APP_PORT, function () {
     console.log('Listen port :', APP_PORT);
     console.log('Server Run ...');
